@@ -43,17 +43,19 @@ let decryptBtn = document.getElementById("decrypt-btn");
 function encrypt() {
   if (encryptText.value === "") {
     alert("Please enter something :)");
-  } else {
-    let textArray = encryptText.value.split("");
-    arrayMatch = textArray.filter((element) => alphabet.includes(element));
-    if (arrayMatch.length === 0) {
-      alert("no match pls use uppercase letters :)");
-    } else {
-      let arrayResult = arrayMatch.map((element) => element + caesar.value);
-      decryptText.innerHTML = arrayResult;
-      console.log(arrayResult);
-    }
+    return;
   }
+  
+  let textArray = encryptText.value.split("");
+  arrayMatch = textArray.filter((element) => alphabet.includes(element));
+  if (arrayMatch.length === 0) {
+    alert("no match pls use uppercase letters :)");
+    return;
+  }
+
+  let arrayResult = arrayMatch.map((element) => element + caesar.value);
+  decryptText.innerHTML = arrayResult;
+  console.log(arrayResult);
 }
 
 encryptBtn.addEventListener("click", encrypt);
