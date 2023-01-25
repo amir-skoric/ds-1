@@ -1,61 +1,30 @@
 //Defining variables
-//Ceasar permutation num
-let caesar = document.getElementById("caesar-num");
-
 //Alphabet
-const alphabet = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
-];
+const alphabet = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" ];
+const arraytest = ["hello", "world"]
+
+//Permutation
+const caesar = 3;
 
 //Encrypt/decrypt textarea
-let encryptText = document.getElementById("encrypt-text");
-let decryptText = document.getElementById("decrypt-text");
+var encryptText = document.getElementById("encrypt-text");
+var decryptText = document.getElementById("decrypt-text");
 
 //Encrypt/decrypt buttons
-let encryptBtn = document.getElementById("encrypt-btn");
-let decryptBtn = document.getElementById("decrypt-btn");
+var encryptBtn = document.getElementById("encrypt-btn");
+var decryptBtn = document.getElementById("decrypt-btn");
 
-function encrypt() {
-  if (encryptText.value === "") {
-    alert("Please enter something :)");
-  } else {
-    let textArray = encryptText.value.split("");
-    arrayMatch = textArray.filter((element) => alphabet.includes(element));
-    if (arrayMatch.length === 0) {
-      alert("no match pls use uppercase letters :)");
-    } else {
-      let arrayResult = arrayMatch.map((element) => element + caesar.value);
-      decryptText.innerHTML = arrayResult;
-      console.log(arrayResult);
-    }
-  }
+function encrypt(){
+	var encryptArray = encryptText.value.split("")
+	for (let i = 0; i < encryptArray.length; i++) {
+		var letter = encryptArray[i]
+		console.log(letter)
+		if (letter.includes(alphabet[i])) {
+			console.log(encryptArray.splice(0, 1, alphabet.indexOf(letter)))
+		}
+	}
+	
 }
 
 encryptBtn.addEventListener("click", encrypt);
-
 //decryptBtn.addEventListener("click", decrypt)
